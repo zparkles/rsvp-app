@@ -5,7 +5,7 @@ from pydantic import BaseModel
 from sqlmodel import create_engine, SQLModel, Session, select
 from dotenv import load_dotenv
 import os
-from models import *
+from src.models import *
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from datetime import datetime, timedelta
 from jose import JWTError, jwt
