@@ -1,5 +1,5 @@
 databases:
-  - name: rsvp_app_db
+  - name: rsvp_db
     databaseName: fast_api_db
     user: zparkles
     plan: free
