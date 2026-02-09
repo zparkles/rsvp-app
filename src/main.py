@@ -35,6 +35,7 @@ db = os.getenv("DB_NAME")
 
 
 sqlite_url = f"mysql+pymysql://{user}:{password}@{host}:3307/{db}"
+DATABASE_URL = os.getenv("DATABASE_URL", sqlite_url)
 engine = create_engine(sqlite_url, echo=True, future = True, pool_pre_ping=True)
 
 def create_tables():
