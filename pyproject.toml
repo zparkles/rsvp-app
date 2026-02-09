@@ -13,5 +13,6 @@ dependencies = [
 "uvicorn==0.38.0",
 "bcrypt",
     "psycopg2-binary",
+    "sqlmodel",
 
 ]
