@@ -1,0 +1,17 @@
+[project]
+name = "rsvp-app"
+version = "0.1.0"
+description = "API for guest RSVP"
+requires-python = ">3.9"
+dependencies = [
+"fastapi",
+"pymysql==1.1.2",
+"python-dotenv",
+"python-jose==3.5.0",
+"alembic",
+"sqlalchemy==2.0.44",
+"uvicorn==0.38.0",
+"bcrypt",
+    "psycopg2-binary",
+
+]
