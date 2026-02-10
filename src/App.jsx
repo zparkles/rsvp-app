@@ -10,6 +10,7 @@ import { forwardRef } from 'react'
 import { ShimmeringText } from '/src/components/animate-ui/primitives/texts/shimmering';
 import HTMLFlipBook from 'react-pageflip';
 
+const apiUrl = "https://rsvp-app-xd75.onrender.com"
 
 function QuestionPage({guest}){
     const [isAttending, setIsAttending] = useState(null)
@@ -25,14 +26,14 @@ function QuestionPage({guest}){
         }
     const updateGuest = async(total, attendance) => {
         try {
-            const response = await axios.patch(`https://rsvp-app-xd75.onrender.com/guests/${loggedGuest}`,
+            const response = await axios.patch(`${apiUrl}/guests/${loggedGuest}`,
                 {
                    total,
                    attendance
                     })
-                console.log(response.data)
+                //console.log(response.data)
             } catch (err){
-                console.error(err)
+                //console.error(err)
                 }
         }
 
@@ -193,8 +194,12 @@ function ErrorPage(){
                 return (
 
                     <div className="container2">
-                        <h3>Sorry, you are not on the guest list ˙◠˙</h3>
-                        <button className="btn btn-success" onClick = {()=>{window.close()}}>ok 😬</button>
+                        <div className = "box">
+                            <div className = "text-box-sorry">
+                                <h3>Sorry, you are not on the guest list ˙◠˙</h3>
+                                <button className="btn btn-success" onClick = {()=>{window.close()}}>ok 😬</button>
+                            </div>
+                           </div>
                     </div>
 
                 )
@@ -208,35 +213,16 @@ function MainPage() {
 
     const clickEnter = (name) => {
         try{
-            fetch(`https://rsvp-app-xd75.onrender.com/guests/${name}`)
+            axios.get(`${apiUrl}/guests/${name}`)
             .then(response => {
-                if(!response.ok){
-                    setDoesGuestExist(false)
-                    return
-                    }
-                else {
-                    setDoesGuestExist(true)
-                    return response.json()
-                    }
-
-            }
-            )
-            /*if(!res.ok) {
-                // if (res.status === 404) {
-                //     console.log("Guest not found")
-                //}
-                setDoesGuestExist(false)
-            }
-            else {
                 setDoesGuestExist(true)
-            }*/
+                return response.data
+                }
+            )
+            .catch(function (error) {
+                setDoesGuestExist(false)
+            });
 
-            //console.log("hello")
-            //const fetchGuest = await getGuestFunction(guestName.current.value)
-            // if (fetchGuest){
-            //     setDoesGuestExist(true)
-            // }
-            //alert(msg)
         }catch (e) {
                 console.error(e);
                 return "Error!";
@@ -254,12 +240,10 @@ function MainPage() {
         let ignore = false; //for cleanup
 
         if(!ignore) {
-            fetch("https://rsvp-app-xd75.onrender.com/guests")
-                .then(response => response.json())
+            axios.get(`${apiUrl}/guests`)
+                .then(response => response.data)
                 .then(data => {
                     const rsvped = data.filter(item => item.attendance === true)
-                    console.log(data)
-                    console.log(rsvped)
                     let totalCount = 0
                     rsvped.forEach(item => totalCount += parseInt(item.total))
                     setCount(totalCount)
@@ -285,7 +269,7 @@ function MainPage() {
                         <div className= "text-box">
                             <span className = "shimmeringText"><ShimmeringText text = "˚₊‧꒰ა ♡ ໒꒱ ‧₊˚ " color="#FFADD9" shimmeringColor="#95D8FC"/></span>
                             <h5 className = "text">Type your username here!</h5>
-                            <input className="username-input text" />
+                            <input className="username-input text" value = {guestName} onChange = {(e) => setGuestName(e.target.value)}/>
                             <button type="button" className="btn btn-primary username-enter text" onClick={handleEnter}>Enter</button>
                         </div>
                     </div>
@@ -303,18 +287,6 @@ function MainPage() {
                 )
             }
 
-async function getGuestFunction(name) {
-    const res = await fetch(`https://rsvp-app-xd75.onrender.com/guests/${name}`);
-
-    if(!res.ok) {
-        // if (res.status === 404) {
-        //     console.log("Guest not found")
-            return false;
-        //}
-    }
-    //console.log("hello")
-    return true;
-}
 
 
 function App() {
