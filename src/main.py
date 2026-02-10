@@ -56,7 +56,7 @@ def create_tables():
     SQLModel.metadata.create_all(engine)
 
 
-#create_tables()
+create_tables()
 
 def get_session():
     with Session(engine) as session:
