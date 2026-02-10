@@ -25,7 +25,7 @@ function QuestionPage({guest}){
         }
     const updateGuest = async(total, attendance) => {
         try {
-            const response = await axios.patch(`http://127.0.0.1:8000/guests/${loggedGuest}`,
+            const response = await axios.patch(`https://rsvp-app-xd75.onrender.com/guests/${loggedGuest}`,
                 {
                    total,
                    attendance
@@ -208,7 +208,7 @@ function MainPage() {
 
     const clickEnter = (name) => {
         try{
-            fetch(`http://127.0.0.1:8000/guests/${name}`)
+            fetch(`https://rsvp-app-xd75.onrender.com/guests/${name}`)
             .then(response => {
                 if(!response.ok){
                     setDoesGuestExist(false)
@@ -254,7 +254,7 @@ function MainPage() {
         let ignore = false; //for cleanup
 
         if(!ignore) {
-            fetch("http://127.0.0.1:8000/guests")
+            fetch("https://rsvp-app-xd75.onrender.com/guests")
                 .then(response => response.json())
                 .then(data => {
                     const rsvped = data.filter(item => item.attendance === true)
@@ -304,7 +304,7 @@ function MainPage() {
             }
 
 async function getGuestFunction(name) {
-    const res = await fetch(`http://127.0.0.1:8000/guests/${name}`);
+    const res = await fetch(`https://rsvp-app-xd75.onrender.com/guests/${name}`);
 
     if(!res.ok) {
         // if (res.status === 404) {
