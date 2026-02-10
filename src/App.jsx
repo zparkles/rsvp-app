@@ -197,7 +197,7 @@ function ErrorPage(){
                         <div className = "box">
                             <div className = "text-box-sorry">
                                 <h2>Sorry, you are not on the guest list ˙◠˙</h2>
-                                <button className="btn btn-success btn-lg" onClick = {()=>{window.close()}}>ok 😬</button>
+                                <button className="btn btn-success btn-lg" onClick = {()=> location.reload()}>ok 😬</button>
                             </div>
                            </div>
                     </div>
