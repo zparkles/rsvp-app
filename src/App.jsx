@@ -234,7 +234,11 @@ function MainPage() {
         clickEnter(guestName)
     }
 
-
+    const onKeydownEnter = (event) => {
+        if (event.key === "Enter"){
+            clickEnter(guestName)
+        }
+    }
 
     useEffect(() => {
         let ignore = false; //for cleanup
@@ -269,7 +273,7 @@ function MainPage() {
                         <div className= "text-box">
                             <span className = "shimmeringText"><ShimmeringText text = "˚₊‧꒰ა ♡ ໒꒱ ‧₊˚ " color="#FFADD9" shimmeringColor="#95D8FC"/></span>
                             <h5 className = "text">Type your username here!</h5>
-                            <input className="username-input text" value = {guestName} onChange = {(e) => setGuestName(e.target.value)}/>
+                            <input className="username-input text" value = {guestName} onChange = {(e) => setGuestName(e.target.value)} onKeyDown = {onKeydownEnter}/>
                             <button type="button" className="btn btn-primary username-enter text" onClick={handleEnter}>Enter</button>
                         </div>
                     </div>
