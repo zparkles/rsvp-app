@@ -196,8 +196,8 @@ function ErrorPage(){
                     <div className="container2">
                         <div className = "box">
                             <div className = "text-box-sorry">
-                                <h3>Sorry, you are not on the guest list ˙◠˙</h3>
-                                <button className="btn btn-success" onClick = {()=>{window.close()}}>ok 😬</button>
+                                <h2>Sorry, you are not on the guest list ˙◠˙</h2>
+                                <button className="btn btn-success btn-lg" onClick = {()=>{window.close()}}>ok 😬</button>
                             </div>
                            </div>
                     </div>
