@@ -122,7 +122,7 @@ async def patchGuests(guest_name:str, user: UpdateGuestAttendance, session: Sess
 def log_tables():
     with engine.connect() as conn:
         result = conn.execute(text(
-            "SELECT guests FROM fast_api_db_7lc9 WHERE schemaname='public';"
+            "SELECT tablename FROM pg_tables WHERE schemaname='public';"
         ))
         print("TABLES:", result.fetchall())
 
