@@ -16,6 +16,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from enum import Enum
 import uvicorn
 import re
+from sqlalchemy import text
 
 
 app = FastAPI()
@@ -116,6 +117,17 @@ async def patchGuests(guest_name:str, user: UpdateGuestAttendance, session: Sess
     session.refresh(db_guest)
     return db_guest
 
-if __name__ == '__main__':
-    port = int(os.getenv("PORT", 8000))
-    uvicorn.run(host='0.0.0.0', port= port)
+
+# log tables
+def log_tables():
+    with engine.connect() as conn:
+        result = conn.execute(text(
+            "SELECT guests FROM fast_api_db_7lc9 WHERE schemaname='public';"
+        ))
+        print("TABLES:", result.fetchall())
+
+log_tables()
+
+# if __name__ == '__main__':
+#     port = int(os.getenv("PORT", 8000))
+#     uvicorn.run(host='0.0.0.0', port= port)
