@@ -31,17 +31,25 @@ app.add_middleware(
 
 #SQL setup
 load_dotenv()
-user = os.getenv("DB_USER")
-password = os.getenv("DB_PASSWORD")
-host = os.getenv("DB_HOST")
-db = os.getenv("DB_NAME")
+
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+if not DATABASE_URL :
+    user = os.getenv("DB_USER")
+    password = os.getenv("DB_PASSWORD")
+    host = os.getenv("DB_HOST")
+    db = os.getenv("DB_NAME")
+
+    DATABASE_URL = (f"mysql+pymysql://{user}:{password}@{host}:3307/{db}")
 
 
-sqlite_url = f"mysql+pymysql://{user}:{password}@{host}:3307/{db}"
-DATABASE_URL = os.getenv("DATABASE_URL", sqlite_url)
+#sqlite_url = f"mysql+pymysql://{user}:{password}@{host}:3307/{db}"
 # develpoment mode
 #engine = create_engine(sqlite_url, echo=True, future = True, pool_pre_ping=True)
-engine = create_engine(DATABASE_URL, echo=True, future = True, pool_pre_ping=True)
+engine = create_engine(DATABASE_URL, echo=True,
+                       future = True,
+                       pool_pre_ping=True,
+                       connect_args={"sslmode": "require"} if DATABASE_URL.startswith("postgres") else {})
 
 def create_tables():
     SQLModel.metadata.create_all(engine)
