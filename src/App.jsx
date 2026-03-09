@@ -10,7 +10,7 @@ import { forwardRef } from 'react'
 import { ShimmeringText } from '/src/components/animate-ui/primitives/texts/shimmering';
 import HTMLFlipBook from 'react-pageflip';
 
-const apiUrl = "https://rsvp-app-xd75.onrender.com"
+const apiUrl = "https://rsvp-app-098m.onrender.com"
 
 function QuestionPage({guest}){
     const [isAttending, setIsAttending] = useState(null)
