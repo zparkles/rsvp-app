@@ -162,16 +162,16 @@ function InvitationPage({guestName}){
                                          <img src={closeBtn} className="closeBtn" onClick = {enlargeImage}/>
                                         <HTMLFlipBook width={270} height={400} showCover= {true} usePortrait={false}>
                                                 <div className="invitationPage cover" key = "1">
-                                                        <img className="invitation-image 1" src= {invitation}/>
+                                                        <img className="invitation-image 1" src= {page1}/>
                                                     </div>
                                                     <div className="invitationPage" key = "2">
-                                                        <img className="invitation-image" src= {invitation2}/>
+                                                        <img className="invitation-image" src= {page2}/>
                                                     </div>
                                                      <div className="invitationPage" key = "3">
-                                                        <img className="invitation-image" src= {invitation2}/>
+                                                        <img className="invitation-image" src= {page3}/>
                                                     </div>
                                                     <div className="invitationPage" key = "4">
-                                                        <img className="invitation-image" src= {invitation}/>
+                                                        <img className="invitation-image" src= {page4}/>
                                                     </div>
                                             </HTMLFlipBook>
 {/*                                         <div className = "flipbook"> */}
