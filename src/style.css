@@ -185,7 +185,27 @@ body{
                     gap: 10px;
                     align-items: center!important;
                 }
+        .invitation{
+            z-index: 2;
+            overflow: hidden;
+            position: absolute;
+            object-fit: cover;
+            background-color: #FFFBF2;
+            border-radius: 10px;
+            border: 0px solid white!important;
+            position: absolute;
+            width: 65%;
+            height: 45%;
+            top: 33%;
+            left: 18%;
+        }
 
+            .invitation-image{
+            width:auto;
+            height: 130%;
+            object-fit: contain;
+
+        }
         }
         @media(max-width: 450px){
             .box{
@@ -348,7 +368,78 @@ body{
                     gap: 10px;
                     align-items: center!important;
                 }
+            .invitation-h3 h3 {
+                font-size: 1.4rem;
+            }
+            .invitation{
+            z-index: 2;
+            overflow: hidden;
+            position: absolute;
+            object-fit: cover;
+            background-color: #FFFBF2;
+            border-radius: 10px;
+            border: 0px solid white!important;
+            position: absolute;
+            width: 70vw;
+            height: 45%;
+            top: 15vw;
+            left: 10vw;
         }
+
+        .stf__item{
+          left: -2rem !important;
+           top: 0px !important;
+        }
+        .invitation-image{
+            width:auto;
+            height: 100%;
+            object-fit: contain;
+        }
+        }
+    @media(max-height: 890px){
+            .invitation-h3{
+            z-index:5;
+            top: 15vh;
+            position: absolute;
+            font-family: "Outfit", sans-serif!important;
+            justify-items: center;
+            }
+
+            .rsvp-btn{
+            position: absolute;
+            top: 80vh;
+            z-index: 5;
+            background-color: #7AD2FF;
+            border-color: #7AD2FF;
+            font-family: "Outfit", sans-serif!important;
+        }
+
+        }
+
+
+
+        @media(min-height: 890px) {
+
+            .invitation-h3 {
+                z-index: 5;
+                top: 30vh;
+                position: absolute;
+                font-family: "Outfit", sans-serif !important;
+                justify-items: center;
+
+            }
+
+            .rsvp-btn {
+                position: absolute;
+                top: 70vh;
+                z-index: 5;
+                background-color: #7AD2FF;
+                border-color: #7AD2FF;
+                font-family: "Outfit", sans-serif !important;
+            }
+        }
+
+
 
         .counter-box{
             background-color:#5AAAC7;
@@ -422,19 +513,19 @@ body{
         }
         .letter-box{
             background-color:#FFFFFF;
-            width: 300px;
-            height: 180px;
             border-radius: 15px;
             box-shadow: 5px 5px 0px grey;
             z-index: -2;
             display: flex;
             position: absolute;
+            width: 70%;
+            height: 55%;
+            bottom: 0;
+
 
 
         }
         .top-env {
-        	width: 0;
-        	height: 0;
         	border-left: 148px solid #ECDEFA;
         	border-right: 153px solid #ECDEFA;
         	border-bottom: 130px solid #F1E5FF;
@@ -445,53 +536,36 @@ body{
             border-top-left-radius: 10px;
         	position: absolute;
         	z-index: 3;
+            width: 70%;
+            height: 50%;
+            bottom: 0;
         }
         .flap{
-            width: 0;
-        	height: 0;
-        	top: 160px;
         	border-left: 148px solid transparent;
         	border-right: 153px solid transparent;
         	border-bottom: 120px solid #F1E5FF;
         	position: absolute;
         	z-index:-2;
+            width: 70%;
+            height: 50%;
+        	top: 0;
+
 
         }
 
-        .invitation{
-            top:210px;
-            width: 270px;
-            height: 100px;
-            z-index: 2;
-            overflow: hidden;
-            position: absolute;
-            object-fit: cover;
-            background-color: white;
-            border-radius: 10px;
-            border: 0px solid white!important;
-            /*nanti diganti image*/
-        }
 
         .invitationPage {
             width: 100%;
             height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
         }
 
-        .rsvp-btn{
-            position: absolute;
-            top: 500px;
-            z-index: 5;
-            background-color: #7AD2FF;
-            border-color: #7AD2FF;
-        }
         .rsvp-btn:hover{
             background-color: #BDC8F2;
             border-color: #BDC8F2 ;
-        }
-        .invitation-h3{
-            z-index:5;
-            position: absolute;
-            top: 100px;
         }
         /*#popupImage{
             display: flex;
@@ -511,6 +585,8 @@ body{
           align-items: center;
           background: rgba(0,0,0,0.5);
           z-index: 9999;
+          padding-bottom: 5rem;
+
         }
 
         .flipbook-container {
@@ -533,9 +609,16 @@ body{
             border-radius: 10px;
             max-width: 400px;
         }
-        .invitation-image{
-            width:120%;
-            height: 120%;
+
+
+        .envelope {
+            position: relative;
+            width: 90vw;
+            max-width: 420px;
+            aspect-ratio: 4 / 3;
+            margin: auto;
+            display: flex;
+            justify-content: center;
         }
 
 

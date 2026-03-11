@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef} from 'react'
-import flower from '/flower-svgrepo-com.svg'
 import closeBtn from '/close-circle-svgrepo-com.svg'
 import page2 from '/src/assets/2 surat.png'
 import page1 from '/src/assets/1 surat.png'
@@ -152,39 +151,56 @@ function InvitationPage({guestName}){
                     {rsvpBtnClicked && <QuestionPage guest = {username}/>}
                     {!rsvpBtnClicked &&
                     <div className= "container2">
-                        <h3 className="invitation-h3">· · ─ ·ʚ You are invited ₊˚⊹ 🎐˖ .ᐟ ɞ· ─ · ·</h3>
-                        <div className= "flap"></div>
-
-                        <button className="invitation" onClick = {enlargeImage}></button>
-                        {showElement? (
-                            <div id="popupImage">
-                                     <div className = "flipbook-container" ref = {ref}>
-                                         <img src={closeBtn} className="closeBtn" onClick = {enlargeImage}/>
-                                        <HTMLFlipBook width={270} height={400} showCover= {true} usePortrait={false}>
-                                                <div className="invitationPage cover" key = "1">
-                                                        <img className="invitation-image 1" src= {page1}/>
-                                                    </div>
-                                                    <div className="invitationPage" key = "2">
-                                                        <img className="invitation-image" src= {page2}/>
-                                                    </div>
-                                                     <div className="invitationPage" key = "3">
-                                                        <img className="invitation-image" src= {page3}/>
-                                                    </div>
-                                                    <div className="invitationPage" key = "4">
-                                                        <img className="invitation-image" src= {page4}/>
-                                                    </div>
-                                            </HTMLFlipBook>
-{/*                                         <div className = "flipbook"> */}
-{/*                                         <img className="invitation-image" src= {invitation} onClick = {() => movePage(2)}/> */}
-{/*                                          <img className="invitation-image" src= {invitation2} onClick = {() => movePage(3)}/> */}
-                                       </div>
-{/*                                     </div> */}
-                            </div>
-                        ): <></>}
-                        <div className = "letter-box">
-
+                        <div className="invitation-h3">
+                            <h3>· · ─ ·ʚ You are invited ₊˚⊹ 🎐˖ .ᐟ ɞ· ─ · ·</h3>
+                            <p>(Click on the card to see the full invitation)</p>
                         </div>
-                        <div className = "top-env"></div>
+                        <div className="envelope">
+                            <div className= "flap"></div>
+                            <button className="invitation" onClick = {enlargeImage}></button>
+                            {showElement? (
+                                <div id="popupImage">
+                                         <div className = "flipbook-container" ref = {ref}>
+                                             {window.innerWidth > 450? (<HTMLFlipBook width={Math.min(370, window.innerWidth * 0.9)} height={Math.min(400, window.innerHeight * 0.8)} showCover= {true} usePortrait={false}>
+
+                                                    <div className="invitationPage cover" key = "1">
+                                                            <img className="invitation-image 1" src= {page1}/>
+                                                    </div>
+                                                        <div className="invitationPage" key = "2">
+                                                            <img className="invitation-image" src= {page2}/>
+                                                        </div>
+                                                         <div className="invitationPage" key = "3">
+                                                            <img className="invitation-image" src= {page3}/>
+                                                        </div>
+                                                        <div className="invitationPage" key = "4">
+                                                            <img className="invitation-image" src= {page4}/>
+                                                        </div>
+                                                </HTMLFlipBook>) :
+                                             <HTMLFlipBook width={200} height={350} showCover= {true} usePortrait={true}>
+
+                                                    <div className="invitationPage cover" key = "1">
+                                                            <img className="invitation-image 1" src= {page1}/>
+                                                    </div>
+                                                        <div className="invitationPage" key = "2">
+                                                            <img className="invitation-image" src= {page2}/>
+                                                        </div>
+                                                         <div className="invitationPage" key = "3">
+                                                            <img className="invitation-image" src= {page3}/>
+                                                        </div>
+                                                        <div className="invitationPage" key = "4">
+                                                            <img className="invitation-image" src= {page4}/>
+                                                        </div>
+                                                </HTMLFlipBook>}
+
+                                           </div>
+
+                                </div>
+                            ): <></>}
+                            <div className = "letter-box">
+
+                            </div>
+                            <div className = "top-env"></div>
+                        </div>
                         <button className= "btn btn-primary rsvp-btn" onClick = {clickRSVP}>Click here to RSVP!</button>
                     </div>
                     }
