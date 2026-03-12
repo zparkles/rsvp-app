@@ -11,6 +11,7 @@ import axios from "axios"
 import { forwardRef } from 'react'
 import { ShimmeringText } from '/src/components/animate-ui/primitives/texts/shimmering';
 import HTMLFlipBook from 'react-pageflip';
+import { SyncLoader } from "react-spinners";
 
 const apiUrl = "https://rsvp-app-098m.onrender.com"
 
@@ -228,26 +229,41 @@ function MainPage() {
     let [count, setCount] = useState(0)
     const [doesGuestExist, setDoesGuestExist] = useState(null)
     const [guestName, setGuestName] = useState("")
+    const [isLoading, setIsLoading] = useState(false)
+
 
 
     const clickEnter = (name) => {
+        setIsLoading(true)
+
         try{
-            axios.get(`${apiUrl}/guests/${name}`)
+            axios.get(`${apiUrl}/guests/${name}`, {timeout: 40000})
             .then(response => {
-                setDoesGuestExist(true)
-                return response.data
-                }
+//                 if(response.status === 404){
+//                     setDoesGuestExist(false)
+//                     return
+//                     }
+//                 else {
+                    setDoesGuestExist(true)
+                    return response.data
+                    //}
+
+            }
             )
             .catch(function (error) {
                 setDoesGuestExist(false)
-            });
-
-        }catch (e) {
+                console.log(error.toJSON());
+            })
+            .finally(() => {
+            setIsLoading(false);
+        })
+        } catch (e) {
                 console.error(e);
                 return "Error!";
 
             }
     }
+
 
     const handleEnter = ()=>{
         clickEnter(guestName)
@@ -288,6 +304,14 @@ function MainPage() {
                      {!doesGuestExist && doesGuestExist != null && <ErrorPage/>}
                      {doesGuestExist=== null &&
                     <div className= "container">
+                        {isLoading && (
+                            <div className="loading-overlay">
+                                <div className="loading-content">
+                                    <span className="loading-text">Please wait... (ᴗ˳ᴗ)ᶻ𝗓𐰁</span>
+                                    <SyncLoader color="#FFCFCF" loading={isLoading} />
+                                </div>
+                            </div>
+                        )}
                 <div className = "box">
                         <div className= "text-box">
                             <span className = "shimmeringText"><ShimmeringText text = "˚₊‧꒰ა ♡ ໒꒱ ‧₊˚ " color="#FFADD9" shimmeringColor="#95D8FC"/></span>
