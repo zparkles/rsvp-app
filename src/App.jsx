@@ -164,31 +164,31 @@ function InvitationPage({guestName}){
                                              {window.innerWidth > 450? (<HTMLFlipBook width={Math.min(370, window.innerWidth * 0.9)} height={Math.min(400, window.innerHeight * 0.8)} showCover= {true} usePortrait={false}>
 
                                                     <div className="invitationPage cover" key = "1">
-                                                            <img className="invitation-image 1" src= {page1}/>
+                                                            <img className="invitation-image 1" src= {page2}/>
                                                     </div>
                                                         <div className="invitationPage" key = "2">
-                                                            <img className="invitation-image" src= {page2}/>
+                                                            <img className="invitation-image" src= {page4}/>
                                                         </div>
                                                          <div className="invitationPage" key = "3">
                                                             <img className="invitation-image" src= {page3}/>
                                                         </div>
                                                         <div className="invitationPage" key = "4">
-                                                            <img className="invitation-image" src= {page4}/>
+                                                            <img className="invitation-image" src= {page1}/>
                                                         </div>
                                                 </HTMLFlipBook>) :
                                              <HTMLFlipBook width={200} height={350} showCover= {true} usePortrait={true}>
 
                                                     <div className="invitationPage cover" key = "1">
-                                                            <img className="invitation-image 1" src= {page1}/>
+                                                            <img className="invitation-image 1" src= {page2}/>
                                                     </div>
                                                         <div className="invitationPage" key = "2">
-                                                            <img className="invitation-image" src= {page2}/>
+                                                            <img className="invitation-image" src= {page4}/>
                                                         </div>
                                                          <div className="invitationPage" key = "3">
                                                             <img className="invitation-image" src= {page3}/>
                                                         </div>
                                                         <div className="invitationPage" key = "4">
-                                                            <img className="invitation-image" src= {page4}/>
+                                                            <img className="invitation-image" src= {page1}/>
                                                         </div>
                                                 </HTMLFlipBook>}
 
