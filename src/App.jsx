@@ -177,7 +177,7 @@ function InvitationPage({guestName}){
                                                             <img className="invitation-image" src= {page1}/>
                                                         </div>
                                                 </HTMLFlipBook>) :
-                                             <HTMLFlipBook width={200} height={350} showCover= {true} usePortrait={true}>
+                                             <HTMLFlipBook width={290} height={490} showCover= {true} usePortrait={true}>
 
                                                     <div className="invitationPage cover" key = "1">
                                                             <img className="invitation-image 1" src= {page2}/>
